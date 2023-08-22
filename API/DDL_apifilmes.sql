@@ -4,14 +4,14 @@ USE Filmes
 CREATE TABLE Genero
 (
 	IdGenero int primary key identity,
-	Nome varchar(50)
+	Nome varchar(50) NOT NULL
 )
 
 CREATE TABLE Filme
 (
 	IdFilme int primary key identity,
-	IdGenero int foreign key references Genero(IdGenero),
-	Nome varchar(50)
+	IdGenero int foreign key references Genero(IdGenero) NOT NULL,
+	Nome varchar (50) NOT NULL
 )
 
 INSERT INTO Genero (Nome)
@@ -19,6 +19,9 @@ VALUES ('Terror'), ('Comedia')
 
 INSERT INTO Filme (IdGenero, Nome)
 VALUES (1, 'A freira'), (2, 'As branquelas')
+
+drop table Filme
+drop table Genero
 
 /*
 create database Catalogo;
