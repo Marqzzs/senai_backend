@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>webapi.filme.manha</name>
+    </assembly>
+    <members>
+        <member name="P:webapi.filme.manha.Controllers.GeneroController._generoRepository">
+            <summary>
+            Objeto _genroRepository que ira receber todos os metodo definidos na interface IGeneroRepositoty
+            </summary>
+        </member>
+        <member name="M:webapi.filme.manha.Controllers.GeneroController.#ctor">
+            <summary>
+            Instancia o objeto _generoRepository para que haja referencia aos metodos no repositorio
+            </summary>
+        </member>
+        <member name="M:webapi.filme.manha.Controllers.GeneroController.Get">
+            <summary>
+            Ele é o Endpoint que aciona o metodo listar Todos no repositorio e retorna a resposta para o usuario(frontEnd)
+            </summary>
+            <returns>Resposta para o usuario(front-end)</returns>
+        </member>
+        <member name="M:webapi.filme.manha.Controllers.GeneroController.Post(webapi.filme.manha.Domains.GeneroDomain)">
+            <summary>
+            Endpoint que aciona metodo de cadastro de genero
+            </summary>
+            <param name="novoGenero">Objeto recebido na requisição</param>
+            <returns>Retorna para o usuario(front-end)</returns>
+        </member>
+        <member name="T:webapi.filme.manha.Domains.FilmeDomain">
+            <summary>
+            Classe que representa a entidade(tabela) filme
+            </summary>
+        </member>
+        <member name="T:webapi.filme.manha.Domains.GeneroDomain">
+            <summary>
+            Classe que representa a entidade(tabela) Genero
+            </summary>
+        </member>
+        <member name="T:webapi.filme.manha.Interfaces.IFilmeRepository">
+            <summary>
+            Interface responsavel pelo repositorio FilmeRepository
+            Definir os metodos que serao implementados pelo FilmeRespository
+            </summary>  
+        </member>
+        <member name="M:webapi.filme.manha.Interfaces.IFilmeRepository.Cadastrar(webapi.filme.manha.Domains.FilmeDomain)">
+            <summary>
+            Serve para cadastrar um novo Filme
+            </summary>
+            <param name="NovoFilme">Objeto que sera cadastrado</param>
+        </member>
+        <member name="M:webapi.filme.manha.Interfaces.IFilmeRepository.ListarTodos">
+            <summary>
+            Metodo para listar todos os filmes
+            </summary>
+            <returns>Listagem dos filmes</returns>
+        </member>
+        <member name="M:webapi.filme.manha.Interfaces.IFilmeRepository.AtualizarCorpo(webapi.filme.manha.Domains.FilmeDomain)">
+            <summary>
+            Atualizar objeto passando o seu id pelo corpo de requisição
+            </summary>
+            <param name="Filme">objeto atualizado(novas informações)</param>
+        </member>
+        <member name="M:webapi.filme.manha.Interfaces.IFilmeRepository.AtualizarIdUrl(System.Int32,webapi.filme.manha.Domains.FilmeDomain)">
+            <summary>
+            Atualizar o objeto passando o seu id pela url
+            </summary>
+            <param name="id">id do objeto que sera atualizado</param>
+            <param name="Filme">Objeto atualizado(novas informações)</param>
+        </member>
+        <member name="M:webapi.filme.manha.Interfaces.IFilmeRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta o objeto passando o seu id como parametro
+            </summary>
+            <param name="id">id do objeto que sera deletado</param>
+        </member>
+        <member name="M:webapi.filme.manha.Interfaces.IFilmeRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um objeto pelo seu id
+            </summary>
+            <param name="id">id do objeto a ser buscado</param>
+            <returns>Retorna o objeto</returns>
+        </member>
+        <member name="T:webapi.filme.manha.Interfaces.IGeneroRepository">
+            <summary>
+            Interface responsavel pelo repositorio GeneroRepository
+            Definir os metodos que serao implementados pelo GeneroRespository
+            </summary>
+        </member>
+        <member name="M:webapi.filme.manha.Interfaces.IGeneroRepository.Cadastrar(webapi.filme.manha.Domains.GeneroDomain)">
+            <summary>
+            Serve para cadastrar um novo genero
+            </summary>
+            <param name="NovoGenero">Objeto que sera cadastrado</param> 
+        </member>
+        <member name="M:webapi.filme.manha.Interfaces.IGeneroRepository.ListarTodos">
+            <summary>
+            Listar todos os generos
+            </summary>
+            <returns>Retorna os objetos listados</returns>
+        </member>
+        <member name="M:webapi.filme.manha.Interfaces.IGeneroRepository.AtualizarIdCorpo(webapi.filme.manha.Domains.GeneroDomain)">
+            <summary>
+            Atualizar objeto existente passando o seu id pelo corpo da requisição
+            </summary>
+            <param name="Genero">Objeto atualizado (novas informações)</param> 
+        </member>
+        <member name="M:webapi.filme.manha.Interfaces.IGeneroRepository.AtualizarIdUrl(System.Int32,webapi.filme.manha.Domains.GeneroDomain)">
+            <summary>
+            Atualizar objeto existente passando seu id pela url
+            </summary>
+            <param name="id">id do objeto que sera atualizado</param> 
+            <param name="genero">objeto atualizado (novas informações)</param> 
+        </member>
+        <member name="M:webapi.filme.manha.Interfaces.IGeneroRepository.Deletar(System.Int32)">
+            <summary>
+            
+            Deletar um objeto
+            </summary>
+            <param name="id">id so objeto que sera deletado</param> 
+        </member>
+        <member name="M:webapi.filme.manha.Interfaces.IGeneroRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um objeto pelo atraves do seu id
+            </summary>
+            <param name="id">id do objeto a ser buscado</param> 
+            <returns>o objeto buscado</returns> 
+        </member>
+        <member name="F:webapi.filme.manha.Repositories.FilmeRepository.StringConexao">
+            <summary>
+            string de conexao com o banco de dados que recebe os seguintes parametros
+            Data Source : nome do servidor
+            Initial Catalog : nome do banco de dados
+            Autenticacao :
+                - Windows : integrated Security = true;
+                - SQL : User id : sa; Pwd : Senha
+            </summary>
+        </member>
+        <member name="F:webapi.filme.manha.Repositories.GeneroRepository.StringConexao">
+            <summary>
+            string de conexao com o banco de dados que recebe os seguintes parametros
+            Data Source : nome do servidor
+            Initial Catalog : nome do banco de dados
+            Autenticacao :
+                - Windows : integrated Security = true;
+                - SQL : User id : sa; Pwd : Senha
+            </summary>
+        </member>
+        <member name="M:webapi.filme.manha.Repositories.GeneroRepository.webapi#filme#manha#Interfaces#IGeneroRepository#BuscarPorId(System.Int32)">
+            <summary>
+            Esse metodo vai buscar um objeto passando como parametro o seu id
+            </summary>
+            <param name="id">o Id do objeto a ser buscado</param>
+            <returns>Retrona a informação para o front-end</returns>
+        </member>
+        <member name="M:webapi.filme.manha.Repositories.GeneroRepository.webapi#filme#manha#Interfaces#IGeneroRepository#Cadastrar(webapi.filme.manha.Domains.GeneroDomain)">
+            <summary>
+            Esse metodo vai cadastrar um novo genero
+            </summary>
+            <param name="NovoGenero">Objeto com as informaçõs que seram cadastradas</param>
+        </member>
+        <member name="M:webapi.filme.manha.Repositories.GeneroRepository.webapi#filme#manha#Interfaces#IGeneroRepository#Deletar(System.Int32)">
+            <summary>
+            Esse metodo vai deletar um objeto passando como parametro um id
+            </summary>
+            <param name="id">O objeto a ser deletado</param>
+        </member>
+        <member name="M:webapi.filme.manha.Repositories.GeneroRepository.webapi#filme#manha#Interfaces#IGeneroRepository#ListarTodos">
+            <summary>
+            Esse metodo vai listar todos os objetos da tabela Genero
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
