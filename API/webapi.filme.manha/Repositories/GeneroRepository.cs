@@ -15,14 +15,58 @@ namespace webapi.filme.manha.Repositories
         ///     - SQL : User id : sa; Pwd : Senha
         /// </summary>
         public string StringConexao = "Data Source = NOTE09-S14; Initial Catalog = Filmes; User Id = SA; Pwd = Senai@134";
+
+        /// <summary>
+        /// Esse metodo vai atualizar um objeto passando como parametro o seu id
+        /// </summary>
+        /// <param name="Genero">Objeto a ser atualizado</param>
         void IGeneroRepository.AtualizarIdCorpo(GeneroDomain Genero)
         {
-            throw new NotImplementedException();
+            //Abrindo a conexão com o banco de dados
+            using (SqlConnection connection = new SqlConnection(StringConexao))
+            {
+                //declarando a query do banco de dados
+                string queryAtualizar = "UPDATE Genero SET Nome = @Nome WHERE IdGenero = @IdGenero";
+                //declando o comand
+                using (SqlCommand cmd = new SqlCommand(queryAtualizar, connection))
+                {
+                    //passando os parametros
+                    cmd.Parameters.AddWithValue("@IdGenero", Genero.IdGenero);
+                    cmd.Parameters.AddWithValue("@Nome", Genero.Nome);
+                    //abrindo e executando a conexão e a query
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
+        /// <summary>
+        /// Atualiza o nome de um gênero com base no ID passado pela URL.
+        /// </summary>
+        /// <param name="id">O ID do gênero a ser atualizado.</param>
+        /// <param name="genero">O objeto contendo o novo nome do gênero.</param>
         void IGeneroRepository.AtualizarIdUrl(int id, GeneroDomain genero)
         {
-            throw new NotImplementedException();
+            // Cria uma nova conexão com o banco de dados usando a string de conexão fornecida.
+            using (SqlConnection connection = new SqlConnection(StringConexao))
+            {
+                // Define a consulta SQL para atualizar o nome do gênero com base no ID.
+                string queryAtualizarUrl = "UPDATE Genero SET Nome = @Nome WHERE IdGenero = @IdGenero";
+
+                // Cria um novo comando SQL usando a consulta e a conexão.
+                using (SqlCommand cmd = new SqlCommand(queryAtualizarUrl, connection))
+                {
+                    // Adiciona parâmetros ao comando para substituir os marcadores na consulta.
+                    cmd.Parameters.AddWithValue("@IdGenero", id); // Define o ID do gênero a ser atualizado.
+                    cmd.Parameters.AddWithValue("@Nome", genero.Nome); // Define o novo nome do gênero.
+
+                    // Abre a conexão com o banco de dados.
+                    connection.Open();
+
+                    // Executa o comando SQL de atualização no banco de dados.
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         /// <summary>
@@ -38,23 +82,27 @@ namespace webapi.filme.manha.Repositories
 
                 using (SqlCommand cmd = new SqlCommand(queryBuscar, connection))
                 {
-                    cmd.Parameters.AddWithValue("@IdGenero", id);
 
+                    cmd.Parameters.AddWithValue("@IdGenero", id);
+                    //Abre a conexão com o banco de dados
                     connection.Open();
 
+                    //Declara o SqlDataReader para percorrer a tabela do banco de dados
                     using (SqlDataReader rdr = cmd.ExecuteReader())
                     {
                         if (rdr.Read())
                         {
                             GeneroDomain genero = new GeneroDomain();
-
+                            //Atribui a propiedade IdGenero o valor recebido no rdr
                             genero.IdGenero = Convert.ToInt32(rdr["IdGenero"]);
+                            //Atribui a propiedade Nome o valor recebido no rdr
                             genero.Nome = rdr["Nome"].ToString();
-
+                            //Retorna o objeto
                             return genero;
                         }
                         else
                         {
+                            //Retorna nulo
                             return null;
                         }
 

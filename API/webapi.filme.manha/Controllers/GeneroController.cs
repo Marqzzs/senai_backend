@@ -125,5 +125,46 @@ namespace webapi.filme.manha.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualiza um gênero pelo ID passado pelo corpo da solicitação.
+        /// </summary>
+        /// <param name="id">O ID do gênero a ser atualizado.</param>
+        /// <param name="genero">O objeto contendo as informações atualizadas do gênero.</param>
+        /// <returns>Uma resposta indicando o resultado da atualização.</returns>
+        [HttpPatch("{id}")]
+        public IActionResult AtualizarIdCorpo(int id, GeneroDomain genero)
+        {
+            try
+            {
+                genero.IdGenero = id; // Define o ID do gênero com base no parâmetro da rota
+                _generoRepository.AtualizarIdCorpo(genero); // Chama o método do repositório para atualizar o gênero
+                return Ok(); // Retorna uma resposta de sucesso (HTTP 200 OK)
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message); // Retorna uma resposta de erro com a mensagem da exceção
+            }
+        }
+
+        /// <summary>
+        /// Atualiza o nome de um gênero pelo ID passado pela URL.
+        /// </summary>
+        /// <param name="idGenero">O ID do gênero a ser atualizado.</param>
+        /// <param name="genero">O objeto contendo o novo nome do gênero.</param>
+        /// <returns>Uma resposta indicando o resultado da atualização.</returns>
+        [HttpPatch("atualizar-nome/{idGenero}")]
+        public IActionResult AtualizarIdUrl(int idGenero, GeneroDomain genero)
+        {
+            try
+            {
+                genero.IdGenero = idGenero; // Define o ID do gênero com base no parâmetro da rota
+                _generoRepository.AtualizarIdCorpo(genero); // Chama o método do repositório para atualizar o gênero
+                return StatusCode(201); // Retorna uma resposta de sucesso (HTTP 201 Created)
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro.Message); // Retorna uma resposta de erro com a mensagem da exceção
+            }
+        }
     }
 }

@@ -27,6 +27,36 @@
             <param name="novoGenero">Objeto recebido na requisição</param>
             <returns>Retorna para o usuario(front-end)</returns>
         </member>
+        <member name="M:webapi.filme.manha.Controllers.GeneroController.Delete(System.Int32)">
+            <summary>
+            Endpoint do metodo de deletar o objeto passando o seu id  como parametro
+            </summary>
+            <param name="id">O id do objeto a ser deletado</param>
+            <returns>Retorna o objeto para o front-end</returns>
+        </member>
+        <member name="M:webapi.filme.manha.Controllers.GeneroController.BuscarPorId(System.Int32)">
+            <summary>
+            Endpoint do metedo de buscar por id
+            </summary>
+            <param name="id">Id do objeto a ser buscado</param>
+            <returns>Retorna para o front-end</returns>
+        </member>
+        <member name="M:webapi.filme.manha.Controllers.GeneroController.AtualizarIdCorpo(System.Int32,webapi.filme.manha.Domains.GeneroDomain)">
+            <summary>
+            Atualiza um gênero pelo ID passado pelo corpo da solicitação.
+            </summary>
+            <param name="id">O ID do gênero a ser atualizado.</param>
+            <param name="genero">O objeto contendo as informações atualizadas do gênero.</param>
+            <returns>Uma resposta indicando o resultado da atualização.</returns>
+        </member>
+        <member name="M:webapi.filme.manha.Controllers.GeneroController.AtualizarIdUrl(System.Int32,webapi.filme.manha.Domains.GeneroDomain)">
+            <summary>
+            Atualiza o nome de um gênero pelo ID passado pela URL.
+            </summary>
+            <param name="idGenero">O ID do gênero a ser atualizado.</param>
+            <param name="genero">O objeto contendo o novo nome do gênero.</param>
+            <returns>Uma resposta indicando o resultado da atualização.</returns>
+        </member>
         <member name="T:webapi.filme.manha.Domains.FilmeDomain">
             <summary>
             Classe que representa a entidade(tabela) filme
@@ -145,6 +175,19 @@
                 - Windows : integrated Security = true;
                 - SQL : User id : sa; Pwd : Senha
             </summary>
+        </member>
+        <member name="M:webapi.filme.manha.Repositories.GeneroRepository.webapi#filme#manha#Interfaces#IGeneroRepository#AtualizarIdCorpo(webapi.filme.manha.Domains.GeneroDomain)">
+            <summary>
+            Esse metodo vai atualizar um objeto passando como parametro o seu id
+            </summary>
+            <param name="Genero">Objeto a ser atualizado</param>
+        </member>
+        <member name="M:webapi.filme.manha.Repositories.GeneroRepository.webapi#filme#manha#Interfaces#IGeneroRepository#AtualizarIdUrl(System.Int32,webapi.filme.manha.Domains.GeneroDomain)">
+            <summary>
+            Atualiza o nome de um gênero com base no ID passado pela URL.
+            </summary>
+            <param name="id">O ID do gênero a ser atualizado.</param>
+            <param name="genero">O objeto contendo o novo nome do gênero.</param>
         </member>
         <member name="M:webapi.filme.manha.Repositories.GeneroRepository.webapi#filme#manha#Interfaces#IGeneroRepository#BuscarPorId(System.Int32)">
             <summary>
