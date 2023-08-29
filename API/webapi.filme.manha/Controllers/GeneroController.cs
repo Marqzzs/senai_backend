@@ -152,7 +152,7 @@ namespace webapi.filme.manha.Controllers
         /// <param name="idGenero">O ID do gênero a ser atualizado.</param>
         /// <param name="genero">O objeto contendo o novo nome do gênero.</param>
         /// <returns>Uma resposta indicando o resultado da atualização.</returns>
-        [HttpPatch("atualizar-nome/{idGenero}")]
+        [HttpPatch("atualizar/{idGenero}")]
         public IActionResult AtualizarIdUrl(int idGenero, GeneroDomain genero)
         {
             try

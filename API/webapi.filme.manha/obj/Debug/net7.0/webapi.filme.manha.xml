@@ -4,6 +4,43 @@
         <name>webapi.filme.manha</name>
     </assembly>
     <members>
+        <member name="P:webapi.filme.manha.Controllers.FilmeController._filmeRepository">
+            <summary>
+            Objeto _filmeRepository que ira receber todos os metodo definidos na interface IFilmeRepositoty
+            </summary>
+        </member>
+        <member name="M:webapi.filme.manha.Controllers.FilmeController.#ctor">
+            <summary>
+            Instancia o objeto _filmeRepository para que haja referencia aos metodos no repositorio
+            </summary>
+        </member>
+        <member name="M:webapi.filme.manha.Controllers.FilmeController.Get">
+            <summary>
+            End point que aciona o metodo listar todos do FilmeRepository
+            </summary>
+            <returns>Retorna uma lista com objetos</returns>
+        </member>
+        <member name="M:webapi.filme.manha.Controllers.FilmeController.Post(webapi.filme.manha.Domains.FilmeDomain)">
+            <summary>
+            End point que cadastra um objeto na tabela  filme
+            </summary>
+            <param name="novoFilme">Objeto que foi cadastrado</param>
+            <returns>Retorna o objeto para o front-end</returns>
+        </member>
+        <member name="M:webapi.filme.manha.Controllers.FilmeController.Delete(System.Int32)">
+            <summary>
+            End point que aciona o metodo de deletar
+            </summary>
+            <param name="id">id do objeto a ser deletado</param>
+            <returns>Retorna o objeto para o front-end</returns>
+        </member>
+        <member name="M:webapi.filme.manha.Controllers.FilmeController.BuscarPorId(System.Int32)">
+            <summary>
+            End point que busca um onjeto passando como parametro o seu id
+            </summary>
+            <param name="id">id do objeto a ser buscado</param>
+            <returns>Retorna o objeto ao front end</returns>
+        </member>
         <member name="P:webapi.filme.manha.Controllers.GeneroController._generoRepository">
             <summary>
             Objeto _genroRepository que ira receber todos os metodo definidos na interface IGeneroRepositoty
@@ -165,6 +202,24 @@
                 - Windows : integrated Security = true;
                 - SQL : User id : sa; Pwd : Senha
             </summary>
+        </member>
+        <member name="M:webapi.filme.manha.Repositories.FilmeRepository.Cadastrar(webapi.filme.manha.Domains.FilmeDomain)">
+            <summary>
+            Metodo que cadastra um objeto na tabela Filme
+            </summary>
+            <param name="NovoFilme">Novo objeto que foi cadastrado</param>
+        </member>
+        <member name="M:webapi.filme.manha.Repositories.FilmeRepository.Deletar(System.Int32)">
+            <summary>
+            Metodo que deleta o objeto da tabela filme
+            </summary>
+            <param name="id">Id do objeto que sera deletado</param>
+        </member>
+        <member name="M:webapi.filme.manha.Repositories.FilmeRepository.ListarTodos">
+            <summary>
+            Metodo de listar todos os objetos da tabela filme
+            </summary>
+            <returns>Retorna a lista com os objetos</returns>
         </member>
         <member name="F:webapi.filme.manha.Repositories.GeneroRepository.StringConexao">
             <summary>
