@@ -14,6 +14,14 @@ CREATE TABLE Filme
 	Nome varchar (50) NOT NULL
 )
 
+CREATE TABLE Usuario
+(
+	IdUsusario INT PRIMARY KEY IDENTITY,
+	Email VARCHAR(50) NOT NULL UNIQUE,
+	Senha VARCHAR(50) NOT NULL,
+	Permissao BIT
+)
+
 INSERT INTO Genero (Nome)
 VALUES ('Terror'), ('Comedia')
 

@@ -36,10 +36,17 @@
         </member>
         <member name="M:webapi.filme.manha.Controllers.FilmeController.BuscarPorId(System.Int32)">
             <summary>
-            End point que busca um onjeto passando como parametro o seu id
+            End point que busca um objeto passando como parametro o seu id
             </summary>
             <param name="id">id do objeto a ser buscado</param>
             <returns>Retorna o objeto ao front end</returns>
+        </member>
+        <member name="M:webapi.filme.manha.Controllers.FilmeController.AtualizarIdCorpo(System.Int32,webapi.filme.manha.Domains.FilmeDomain)">
+            <summary>
+            End point que atualizara um objeto filme pelo seu corpo
+            </summary>
+            <param name="id">id do objeto a ser atualizado</param>
+            <returns>Retorna um objeto com navas informações</returns>
         </member>
         <member name="P:webapi.filme.manha.Controllers.GeneroController._generoRepository">
             <summary>
@@ -202,6 +209,26 @@
                 - Windows : integrated Security = true;
                 - SQL : User id : sa; Pwd : Senha
             </summary>
+        </member>
+        <member name="M:webapi.filme.manha.Repositories.FilmeRepository.AtualizarCorpo(webapi.filme.manha.Domains.FilmeDomain)">
+            <summary>
+            Metodo que atualizara um objeto filme pelo seu corpo
+            </summary>
+            <param name="Filme">Objeto a ser atualizado</param>
+        </member>
+        <member name="M:webapi.filme.manha.Repositories.FilmeRepository.AtualizarIdUrl(System.Int32,webapi.filme.manha.Domains.FilmeDomain)">
+            <summary>
+            Atualiza os dados de um filme com base no ID passado pela URL.
+            </summary>
+            <param name="id">O ID do filme a ser atualizado.</param>
+            <param name="Filme">O objeto contendo os novos dados do filme.</param>
+        </member>
+        <member name="M:webapi.filme.manha.Repositories.FilmeRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Metodo que busca um objeto pelo id
+            </summary>
+            <param name="id">Id do objeto a ser buscado</param>
+            <returns>Retorna para o front-end</returns>
         </member>
         <member name="M:webapi.filme.manha.Repositories.FilmeRepository.Cadastrar(webapi.filme.manha.Domains.FilmeDomain)">
             <summary>

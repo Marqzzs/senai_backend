@@ -97,7 +97,7 @@ namespace webapi.filme.manha.Controllers
         }
 
         /// <summary>
-        /// End point que busca um onjeto passando como parametro o seu id
+        /// End point que busca um objeto passando como parametro o seu id
         /// </summary>
         /// <param name="id">id do objeto a ser buscado</param>
         /// <returns>Retorna o objeto ao front end</returns>
@@ -122,5 +122,86 @@ namespace webapi.filme.manha.Controllers
                 return BadRequest(erro.Message); // Retorna erro 400 Bad Request em caso de exceção
             }
         }
+        /// <summary>
+        /// End point que atualizara um objeto filme pelo seu corpo
+        /// </summary>
+        /// <param name="id">id do objeto a ser atualizado</param>
+        /// <returns>Retorna um objeto com navas informações</returns>
+        [HttpPut]
+        public IActionResult AtualizarIdCorpo(int id, FilmeDomain filmeAtualizado)
+        {
+            try
+            {
+                // Busca o filme pelo ID
+                FilmeDomain filmeBuscado = _filmeRepository.BuscarPorId(id);
+
+                if (filmeBuscado != null)
+                {
+                    // Atualiza as propriedades do filme buscado com os dados do filme atualizado
+                    filmeBuscado.Nome = filmeAtualizado.Nome;
+                    filmeBuscado.IdGenero = filmeAtualizado.IdGenero;
+
+                    try
+                    {
+                        _filmeRepository.AtualizarCorpo(filmeBuscado);
+                        return Ok(); // Retorna um status code de sucesso
+                    }
+                    catch (Exception erro)
+                    {
+                        return BadRequest(erro.Message); // Retorna um status code de erro
+                    }
+                }
+                else
+                {
+                    return NotFound("Filme não encontrado"); // Retorna um status code 404 se o filme não for encontrado
+                }
+            }
+            catch
+            {
+                return NotFound("Filme não encontrado");
+            }
+        }
+        /// <summary>
+        /// End point que atualizara um objeto pela url
+        /// </summary>
+        /// <param name="id">id do objeto</param>
+        /// <param name="filme">objeto a ser atualizado</param>
+        /// <returns>Retorna o objeto para o front end</returns>
+        [HttpPatch("{id}")]
+        public IActionResult AtualizarIdUrl(int id, FilmeDomain filme)
+        {
+            filme.IdFilme = id;
+            try
+            {
+                // Busca o filme pelo ID
+                FilmeDomain filmeBuscado = _filmeRepository.BuscarPorId(id);
+
+                if (filmeBuscado != null)
+                {
+                    // Atualiza as propriedades do filme buscado com os dados do filme atualizado
+                    filmeBuscado.Nome = filme.Nome;
+                    filmeBuscado.IdGenero = filme.IdGenero;
+
+                    try
+                    {
+                        _filmeRepository.AtualizarIdUrl(id, filmeBuscado);
+                        return Ok(); // Retorna um status code de sucesso
+                    }
+                    catch (Exception erro)
+                    {
+                        return BadRequest(erro.Message); // Retorna um status code de erro
+                    }
+                }
+                else
+                {
+                    return NotFound("Filme não encontrado"); // Retorna um status code 404 se o filme não for encontrado
+                }
+            }
+            catch
+            {
+                return NotFound("Filme não encontrado");
+            }
+        }
     }
 }
+
