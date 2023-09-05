@@ -4,15 +4,16 @@ namespace webapi.filme.manha.Domains
 {
     public class UsuarioDomain
     {
-        [Required]
+
         public int IdUsuario { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="O email é obrigatorio")]
         public string Email { get; set; }
 
-        [Required]
+        [StringLength(20, MinimumLength =3, ErrorMessage ="A senha deve ter de 3 a 20 caracteres")]
+        [Required(ErrorMessage ="A senha é obrigatoria")]
         public string Senha { get; set; }
 
-        public bool Permissao { get; set; }
+        public string Permissao { get; set; }
     }
 }

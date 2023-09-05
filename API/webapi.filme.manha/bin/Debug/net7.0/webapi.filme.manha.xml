@@ -48,6 +48,14 @@
             <param name="id">id do objeto a ser atualizado</param>
             <returns>Retorna um objeto com navas informações</returns>
         </member>
+        <member name="M:webapi.filme.manha.Controllers.FilmeController.AtualizarIdUrl(System.Int32,webapi.filme.manha.Domains.FilmeDomain)">
+            <summary>
+            End point que atualizara um objeto pela url
+            </summary>
+            <param name="id">id do objeto</param>
+            <param name="filme">objeto a ser atualizado</param>
+            <returns>Retorna o objeto para o front end</returns>
+        </member>
         <member name="P:webapi.filme.manha.Controllers.GeneroController._generoRepository">
             <summary>
             Objeto _genroRepository que ira receber todos os metodo definidos na interface IGeneroRepositoty
@@ -100,6 +108,16 @@
             <param name="idGenero">O ID do gênero a ser atualizado.</param>
             <param name="genero">O objeto contendo o novo nome do gênero.</param>
             <returns>Uma resposta indicando o resultado da atualização.</returns>
+        </member>
+        <member name="M:webapi.filme.manha.Controllers.UsuarioController.Login(webapi.filme.manha.Domains.UsuarioDomain)">
+            <summary>
+            Método para realizar o login de um usuário com base no email e senha fornecidos.
+            </summary>
+            <param name="usuario">O objeto UsuarioDomain contendo o email e senha do usuário.</param>
+            <returns>
+            Um IActionResult que pode ser um NotFound com uma mensagem de erro se o login falhar,
+            ou um Ok com os dados do usuário se o login for bem-sucedido.
+            </returns>
         </member>
         <member name="T:webapi.filme.manha.Domains.FilmeDomain">
             <summary>
@@ -200,6 +218,14 @@
             <param name="id">id do objeto a ser buscado</param> 
             <returns>o objeto buscado</returns> 
         </member>
+        <member name="M:webapi.filme.manha.Interfaces.IUsuarioRepository.IUsuarioRepository.Login(System.String,System.String)">
+            <summary>
+            Método de autenticação de usuário
+            </summary>
+            <param name="email"> email do usuario </param>
+            <param name="senha"> senha do usuario </param>
+            <returns>retorna um objeto do tipo usuario</returns>s
+        </member>
         <member name="F:webapi.filme.manha.Repositories.FilmeRepository.StringConexao">
             <summary>
             string de conexao com o banco de dados que recebe os seguintes parametros
@@ -295,6 +321,14 @@
             Esse metodo vai listar todos os objetos da tabela Genero
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:webapi.filme.manha.Repositories.UsuarioRepository.Login(System.String,System.String)">
+            <summary>
+            Método para realizar o login de um usuário com base no email e senha.
+            </summary>
+            <param name="email">O email do usuário.</param>
+            <param name="senha">A senha do usuário.</param>
+            <returns>Um objeto do tipo UsuarioDomain se o login for bem-sucedido, caso contrário, retorna null.</returns>
         </member>
     </members>
 </doc>

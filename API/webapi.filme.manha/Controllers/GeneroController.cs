@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using webapi.filme.manha.Domains;
 using webapi.filme.manha.Interfaces;
@@ -39,6 +40,7 @@ namespace webapi.filme.manha.Controllers
         /// </summary>
         /// <returns>Resposta para o usuario(front-end)</returns>
         [HttpGet]
+        [Authorize(Roles = "Administrador, Comum")]
         public IActionResult Get()
         {
             try
@@ -63,6 +65,7 @@ namespace webapi.filme.manha.Controllers
         /// <param name="novoGenero">Objeto recebido na requisição</param>
         /// <returns>Retorna para o usuario(front-end)</returns>
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Post(GeneroDomain novoGenero)
         {
             try
@@ -85,6 +88,7 @@ namespace webapi.filme.manha.Controllers
         /// <param name="id">O id do objeto a ser deletado</param>
         /// <returns>Retorna o objeto para o front-end</returns>
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Delete(int id)
         {
             try
@@ -104,6 +108,7 @@ namespace webapi.filme.manha.Controllers
         /// <param name="id">Id do objeto a ser buscado</param>
         /// <returns>Retorna para o front-end</returns>
         [HttpGet("{id}")]
+        [Authorize(Roles = "Administrador, Comum")]
         public IActionResult BuscarPorId(int id)
         {
             try
@@ -132,6 +137,7 @@ namespace webapi.filme.manha.Controllers
         /// <param name="genero">O objeto contendo as informações atualizadas do gênero.</param>
         /// <returns>Uma resposta indicando o resultado da atualização.</returns>
         [HttpPatch("{id}")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult AtualizarIdCorpo(int id, GeneroDomain genero)
         {
             try
@@ -153,6 +159,7 @@ namespace webapi.filme.manha.Controllers
         /// <param name="genero">O objeto contendo o novo nome do gênero.</param>
         /// <returns>Uma resposta indicando o resultado da atualização.</returns>
         [HttpPatch("atualizar/{idGenero}")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult AtualizarIdUrl(int idGenero, GeneroDomain genero)
         {
             try

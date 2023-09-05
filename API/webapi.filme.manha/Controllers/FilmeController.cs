@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using webapi.filme.manha.Domains;
 using webapi.filme.manha.Interfaces;
 using webapi.filme.manha.Repositories;
@@ -37,6 +39,7 @@ namespace webapi.filme.manha.Controllers
         /// </summary>
         /// <returns>Retorna uma lista com objetos</returns>
         [HttpGet]
+        [Authorize(Roles = "Administrador, Comum")]
         public IActionResult Get()
         {
             try
@@ -61,6 +64,7 @@ namespace webapi.filme.manha.Controllers
         /// <param name="novoFilme">Objeto que foi cadastrado</param>
         /// <returns>Retorna o objeto para o front-end</returns>
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Post(FilmeDomain novoFilme)
         {
             try
@@ -83,6 +87,7 @@ namespace webapi.filme.manha.Controllers
         /// <param name="id">id do objeto a ser deletado</param>
         /// <returns>Retorna o objeto para o front-end</returns>
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Delete(int id)
         {
             try
@@ -102,6 +107,7 @@ namespace webapi.filme.manha.Controllers
         /// <param name="id">id do objeto a ser buscado</param>
         /// <returns>Retorna o objeto ao front end</returns>
         [HttpGet("{id}")]
+        [Authorize(Roles = "Administrador, Comum")]
         public IActionResult BuscarPorId(int id)
         {
             try
@@ -128,6 +134,7 @@ namespace webapi.filme.manha.Controllers
         /// <param name="id">id do objeto a ser atualizado</param>
         /// <returns>Retorna um objeto com navas informações</returns>
         [HttpPut]
+        [Authorize(Roles = "Administrador")]
         public IActionResult AtualizarIdCorpo(int id, FilmeDomain filmeAtualizado)
         {
             try
@@ -168,6 +175,7 @@ namespace webapi.filme.manha.Controllers
         /// <param name="filme">objeto a ser atualizado</param>
         /// <returns>Retorna o objeto para o front end</returns>
         [HttpPatch("{id}")]
+        [Authorize(Roles = "Administrador")]
         public IActionResult AtualizarIdUrl(int id, FilmeDomain filme)
         {
             filme.IdFilme = id;

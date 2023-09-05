@@ -16,10 +16,10 @@ CREATE TABLE Filme
 
 CREATE TABLE Usuario
 (
-	IdUsusario INT PRIMARY KEY IDENTITY,
+	IdUsuario INT PRIMARY KEY IDENTITY,
 	Email VARCHAR(50) NOT NULL UNIQUE,
 	Senha VARCHAR(50) NOT NULL,
-	Permissao BIT
+	Permissao VARCHAR(20) NOT NULL
 )
 
 INSERT INTO Genero (Nome)
@@ -28,8 +28,13 @@ VALUES ('Terror'), ('Comedia')
 INSERT INTO Filme (IdGenero, Nome)
 VALUES (1, 'A freira'), (2, 'As branquelas')
 
+INSERT INTO Usuario VALUES('admin@admin.com', 'admin', 'Administrador'), ('comum@comum.com', 'comum', 'Comum')
+
+select * from Usuario
+
 drop table Filme
 drop table Genero
+drop table Usuario
 
 /*
 create database Catalogo;
