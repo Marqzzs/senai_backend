@@ -14,7 +14,8 @@ namespace webapi.filme.manha.Repositories
         ///     - Windows : integrated Security = true;
         ///     - SQL : User id : sa; Pwd : Senha
         /// </summary>
-        public string StringConexao = "Data Source = NOTE09-S14; Initial Catalog = Filmes; User Id = SA; Pwd = Senai@134";
+        public string StringConexao = "Data Source = NOTE09-S14; Initial Catalog = inlock_games_manha; User Id = SA; Pwd = Senai@134";
+
         /// <summary>
         /// Metodo que atualizara um objeto filme pelo seu corpo
         /// </summary>
